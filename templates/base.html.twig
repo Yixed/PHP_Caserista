@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <title>{% block title %}Caserista{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+        {% endblock %}
+    </head>
+    <body>
+
+    <header class="p-3 text-bg-dark" style="background-color: #CAB291">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <ul class="nav col-4 col-sm-auto me-lg-auto mb-2 justify-content-center mb-md-0" >
+                    <li><a href="{{ path("home" )}}" class="nav-link px-2 text-white">Inicio</a></li>
+                    <li><a href="{{ path("search" )}}" class="nav-link px-2 text-white">Buscar</a></li>
+                    <li><a href="{{ path("profile" )}}" class="nav-link px-2 text-white">Perfil</a></li>
+                </ul>
+
+                <div class="text-end">
+                    <h5>bienvenido {{ app.user.name | default("usuario...")}}</h5>
+
+                    <a type="button" class="btn btn-outline-light me-2" href="/login" >Login</a>
+                    <a type="button" class="btn btn-warning" href="/Sign" >Sign in</a>
+
+                    <a class="btn btn-warning" style="background-color: #F8673E;border-color:#F8673E" href="/logout" >logout</a>
+
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+        <main class="container mt-2">
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="background-color: #CAB291">
+            <div class="col-md-4 d-flex align-items-center">
+                <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                    <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+                </a>
+                <span class="mb-3 mb-md-0 text-body-secondary">© 2024 Caserista</span>
+            </div>
+        </footer>
+
+    </body>
+</html>
