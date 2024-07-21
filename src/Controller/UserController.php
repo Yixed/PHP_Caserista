@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,12 +13,15 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
 {
-    #[Route("/user",name:"profile")]
-    public function showUser()
+    #[Route("/user/{id}",name: "showUser", methods: ['GET'])]
+    public function showUser(EntityManagerInterface $doctrine, $id)
     {
+        $repository = $doctrine -> getRepository(User::class);
+        $user = $repository -> find($id);
 
-        return new Response('pagina perfil');
+        return $this->render("User/showUser.html.twig", ["user" => $user]);
     }
+
     #[Route("/user/seed")]
     public function seedUser(EntityManagerInterface $doctrine)
     {
@@ -81,5 +85,25 @@ class UserController extends AbstractController
         }
 
         return $this->render("Users/insertUser.html.twig", ["userForm" => $form]);
+    }
+
+    #[Route("/user/edit/{id}",name:"editUser")]
+    public function editUser(EntityManagerInterface $doctrine, Request $request, $id)
+    {
+        $repository = $doctrine -> getRepository(User::class);
+        $user = $repository -> find($id);
+
+        $form = $this -> createForm(UserType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $userForm = $form->getData();
+            $doctrine->persist($userForm);
+            $doctrine->flush();
+
+            $this->addFlash("exito","carga completada");
+            return $this->redirectToRoute("showUser", ["id" => $id]);
+        }
+
+        return $this->render("User/insertUser.html.twig", ["userForm" => $form]);
     }
 }

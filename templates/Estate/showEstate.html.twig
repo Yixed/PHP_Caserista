@@ -1,11 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <h2>Listado de casas: </h2>
 <div class="container">
 
-    {% for estate in estateArray %}
-        <div class="item  col-xs-4 col-lg-4 m-2">
+        <div class="item  col-xs-4 col-lg-4">
             <div class="thumbnail">
                 <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
                 <div class="caption">
@@ -18,17 +16,15 @@
                             <p class="lead">
                                 {{ estate.price }} €</p>
                         </div>
-                        <a href="{{ path('showEstate', {'id': estate.id}) }}" class="btn btn-primary m-1" style="background-color: #61E36A;border-color:#61E36A">Ver</a>
-
-
-                            <a href="{{ path('editEstate', {'id': estate.id}) }}" class="btn btn-warning m-1">Editar</a>
-                            <a href="{{ path('deleteEstate', {'id': estate.id}) }}" class="btn btn-danger m-1" style="background-color: #F8673E;border-color:#F8673E">Eliminar</a>
-
+                    </div>
+                    <a href="{{ path('editEstate', {'id': estate.id}) }}" class="btn btn-warning m-1">Editar</a>
+                    <a href="{{ path('deleteEstate', {'id': estate.id}) }}" class="btn btn-danger m-1" style="background-color: #F8673E;border-color:#F8673E">Eliminar</a>
+                </div>
                     </div>
                 </div>
             </div>
         </div>
-    {% endfor %}
 
     </div>
+</div>
 {% endblock %}

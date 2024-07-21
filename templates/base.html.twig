@@ -19,14 +19,14 @@
                 <ul class="nav col-4 col-sm-auto me-lg-auto mb-2 justify-content-center mb-md-0" >
                     <li><a href="{{ path("home" )}}" class="nav-link px-2 text-white">Inicio</a></li>
                     <li><a href="{{ path("search" )}}" class="nav-link px-2 text-white">Buscar</a></li>
-                    <li><a href="{{ path("profile" )}}" class="nav-link px-2 text-white">Perfil</a></li>
+                    <li><a href="{{ path("showUser" , {"id": 5})}}" class="nav-link px-2 text-white">Perfil</a></li>
                 </ul>
 
                 <div class="text-end">
                     <h5>bienvenido {{ app.user.name | default("usuario...")}}</h5>
 
                     <a type="button" class="btn btn-outline-light me-2" href="/login" >Login</a>
-                    <a type="button" class="btn btn-warning" href="/Sign" >Sign in</a>
+                    <a type="button" class="btn btn-warning" href="{{ path("insertUser" )}}" >Sign in</a>
 
                     <a class="btn btn-warning" style="background-color: #F8673E;border-color:#F8673E" href="/logout" >logout</a>
 
@@ -40,7 +40,7 @@
             {% block content %}{% endblock %}
         </main>
 
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="background-color: #CAB291">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top fixed-bottom" style="background-color: #CAB291">
             <div class="col-md-4 d-flex align-items-center">
                 <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
                     <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>

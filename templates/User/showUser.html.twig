@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+
+    <div class="container">
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Full Name</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ user.name }}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ user.email }}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Teléfono:</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ user.phone }}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Dirección:</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    --
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-6 m-1">
+                                    <a class="btn btn-warning" target="__blank" href="{{ path('editUser', {'id': user.id}) }}">Editar</a>
+                                </div>
+                                <div class="col-sm-6 m-1">
+                                    <a class="btn btn-primary m-1" style="background-color: #61E36A;border-color:#61E36A" target="__blank" href="{{ path('insertEstate') }}">Añade una propiedad</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+
+{% endblock %}
