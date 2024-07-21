@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+
+    <h2>Datos de la casa:</h2>
+
+    {% for message in app.flashes("exito") %}
+        <p>{{ message }}</p>
+    {%  endfor %}
+
+    {{ form(estateForm) }}
+
+{% endblock %}
